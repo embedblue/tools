@@ -8,6 +8,9 @@ package utils
 import(
 	"crypto/md5"
 	"encoding/hex"
+	"encoding/base64"
+	"io"
+	"math/rand"
 )
 
 func GetMD5String(src string) string{
