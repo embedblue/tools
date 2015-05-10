@@ -15,3 +15,12 @@ func GetMD5String(src string) string{
 	h.Write([]byte(src))
 	return hex.EncodeToString(h.Sum(nil))
 }
+
+func GetGUID(n int)string{
+	b := make([]byte, n)
+	if _, err := io.ReadFull(rand.Reader, b); nil != err {
+		return ""
+	}
+	
+	return GetMD5String(base64.URLEncoding.EncodeToString(b))
+}
