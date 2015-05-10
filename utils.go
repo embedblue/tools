@@ -7,10 +7,10 @@ package utils
 
 import(
 	"crypto/md5"
+	"crypto/rand"
 	"encoding/hex"
 	"encoding/base64"
 	"io"
-	"math/rand"
 )
 
 func GetMD5String(src string) string{
