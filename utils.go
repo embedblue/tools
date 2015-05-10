@@ -19,8 +19,8 @@ func GetMD5String(src string) string{
 	return hex.EncodeToString(h.Sum(nil))
 }
 
-func GetGUID(n int)string{
-	b := make([]byte, n)
+func GetGUID()string{
+	b := make([]byte, 48)
 	if _, err := io.ReadFull(rand.Reader, b); nil != err {
 		return ""
 	}
