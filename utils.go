@@ -6,11 +6,13 @@
 package utils
 
 import(
+	"io"
+	"time"
+	"strconv"
 	"crypto/md5"
 	"crypto/rand"
 	"encoding/hex"
 	"encoding/base64"
-	"io"
 )
 
 func GetMD5String(src string) string{
@@ -24,6 +26,15 @@ func GetGUID()string{
 	if _, err := io.ReadFull(rand.Reader, b); nil != err {
 		return ""
 	}
-	
 	return GetMD5String(base64.URLEncoding.EncodeToString(b))
+}
+
+func GetZeroSecondsToday()int64{
+	y, m, d := time.Now().Date()
+	today := time.Date(y, m, d, 0, 0, 0, 0, time.Local)
+	return today.Unix()
+}
+
+func NowSecondsString()string{
+	return strconv.Itoa(int(time.Now().Unix()))
 }
