@@ -105,6 +105,7 @@ func Math_round(f float64, n int)float64{
 
 /// 根据某天的某个时刻的时间戳，获取当天0:0:0的时间戳
 func GetZeroSecondsFromTimestamp(ts int64)int64{
+	return ts - (ts%86400)
 	today_0_ts := GetZeroSecondsToday()
 	past_time := today_0_ts - ts
 	if past_time > 0 {
