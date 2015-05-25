@@ -111,6 +111,6 @@ func GetZeroSecondsFromTimestamp(ts int64)int64{
 	if past_time > 0 {
 		return today_0_ts - int64(past_time/86400) * 86400
 	}else {
-		return today_0_ts
+		return today_0_ts + 86400
 	}
 }
