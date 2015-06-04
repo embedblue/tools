@@ -74,7 +74,7 @@ func StrToUint32(str string)uint32{
 }
 
 func WriteUint32LE(w *bytes.Buffer, i uint32){
-	binary.Write(w, binary.LittleEndian, i)
+	binary.Write(w, binary.LittleEndian, uint32(i))
 }
 
 func ReadLE(r io.Reader, n interface{}) error {
@@ -115,7 +115,7 @@ func GetZeroSecondsFromTimestamp(ts int64)int64{
 }
 
 func Pkt(msgType uint8, msgHead *bytes.Buffer, msgBody *bytes.Buffer)[]byte{
-	binary.Write(msgHead, binary.LittleEndian, msgType)
+	binary.Write(msgHead, binary.LittleEndian, uint8(msgType))
 	WriteUint32LE(msgHead, uint32(msgBody.Len()))
 	binary.Write(msgHead, binary.LittleEndian, msgBody.Bytes())
 	return msgHead.Bytes()
