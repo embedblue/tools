@@ -116,7 +116,7 @@ func GetZeroSecondsFromTimestamp(ts int64)int64{
 
 func Pkt(msgType uint8, msgHead *bytes.Buffer, msgBody *bytes.Buffer)[]byte{
 	binary.Write(msgHead, binary.LittleEndian, uint8(msgType))
-	WriteUint32LE(msgHead, uint32(msgBody.Len()))
+	binary.Write(msgHead, binary.LittleEndian, uint32(msgBody.Len()))
 	binary.Write(msgHead, binary.LittleEndian, msgBody.Bytes())
 	return msgHead.Bytes()
 }
